@@ -1,0 +1,58 @@
+2020-01-14 09:11:17,511 INFO: Total basket sum: 9,00$, Total discount: 2,80$, Basket contents:
+Product: bread, Price: 1$, Quantity: 1, Discount: No discount
+Product: butter, Price: 0,8$, Quantity: 2, Discount: (DiscountRule: Bread discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 0,5$), AppliedDiscount: 0,5$)
+Product: milk, Price: 1,15$, Quantity: 8, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 2, ItemDiscountedPrice: 1,15$), AppliedDiscount: 2,30$)
+
+2020-01-14 11:36:05,392 INFO: Total basket sum: 9,00$, Total discount: 2,80$, Basket contents:
+Product: bread, Price: 1$, Quantity: 1, Discount: No discount
+Product: butter, Price: 0,8$, Quantity: 2, Discount: (DiscountRule: Bread discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 0,5$), AppliedDiscount: 0,5$)
+Product: milk, Price: 1,15$, Quantity: 8, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 2, ItemDiscountedPrice: 1,15$), AppliedDiscount: 2,30$)
+
+2020-01-14 11:39:19,274 INFO: Total basket sum: 9,00$, Total discount: 2,80$, Basket contents:
+Product: bread, Price: 1$, Quantity: 1, Discount: No discount
+Product: butter, Price: 0,8$, Quantity: 2, Discount: (DiscountRule: Bread discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 0,5$), AppliedDiscount: 0,5$)
+Product: milk, Price: 1,15$, Quantity: 8, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 2, ItemDiscountedPrice: 1,15$), AppliedDiscount: 2,30$)
+
+2020-01-14 11:57:21,304 INFO: Total basket sum: 9,00$, Total discount: 2,80$, Basket contents:
+Product: bread, Price: 1$, Quantity: 1, Discount: No discount
+Product: butter, Price: 0,8$, Quantity: 2, Discount: (DiscountRule: Bread discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 0,5$), AppliedDiscount: 0,5$)
+Product: milk, Price: 1,15$, Quantity: 8, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 2, ItemDiscountedPrice: 1,15$), AppliedDiscount: 2,30$)
+
+2020-01-14 17:51:01,335 INFO: Total basket sum: 9,00$, Total discount: 2,80$, Basket contents:
+Product: bread, Price: 1$, Quantity: 1, Discount: No discount
+Product: butter, Price: 0,8$, Quantity: 2, Discount: (DiscountRule: Bread discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 0,5$), AppliedDiscount: 0,5$)
+Product: milk, Price: 1,15$, Quantity: 8, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 2, ItemDiscountedPrice: 1,15$), AppliedDiscount: 2,30$)
+
+2020-01-14 18:03:24,844 INFO: Total basket sum: 9,00$, Total discount: 2,80$, Basket contents:
+Product: bread, Price: 1$, Quantity: 1, Discount: No discount
+Product: butter, Price: 0,8$, Quantity: 2, Discount: (DiscountRule: Bread discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 0,5$), AppliedDiscount: 0,5$)
+Product: milk, Price: 1,15$, Quantity: 8, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 2, ItemDiscountedPrice: 1,15$), AppliedDiscount: 2,30$)
+
+2020-01-14 18:05:47,951 INFO: Total basket sum: 9,00$, Total discount: 2,80$, Basket contents:
+Product: bread, Price: 1$, Quantity: 1, Discount: No discount
+Product: butter, Price: 0,8$, Quantity: 2, Discount: (DiscountRule: Bread discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 0,5$), AppliedDiscount: 0,5$)
+Product: milk, Price: 1,15$, Quantity: 8, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 2, ItemDiscountedPrice: 1,15$), AppliedDiscount: 2,30$)
+
+2020-01-14 18:08:20,870 INFO: Total basket sum: 9,00$, Total discount: 2,80$, Basket contents:
+Product: bread, Price: 1$, Quantity: 1, Discount: No discount
+Product: butter, Price: 0,8$, Quantity: 2, Discount: (DiscountRule: Bread discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 0,5$), AppliedDiscount: 0,5$)
+Product: milk, Price: 1,15$, Quantity: 8, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 2, ItemDiscountedPrice: 1,15$), AppliedDiscount: 2,30$)
+
+2020-01-14 18:10:24,168 INFO: Total basket sum: 9,00$, Total discount: 2,80$, Basket contents:
+Product: bread, Price: 1$, Quantity: 1, Discount: No discount
+Product: butter, Price: 0,8$, Quantity: 2, Discount: (DiscountRule: Bread discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 0,5$), AppliedDiscount: 0,5$)
+Product: milk, Price: 1,15$, Quantity: 8, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 2, ItemDiscountedPrice: 1,15$), AppliedDiscount: 2,30$)
+
+2020-01-14 21:53:39,189 INFO: Total basket sum: 84,90$, Total discount: 37,30$, Basket contents:
+Product: bread, Price: 1$, Quantity: 1, Discount: No discount
+Product: butter, Price: 0,8$, Quantity: 2, Discount: (DiscountRule: Bread discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 0,5$), AppliedDiscount: 0,5$)
+Product: milk, Price: 1,15$, Quantity: 8, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 2, ItemDiscountedPrice: 1,15$), AppliedDiscount: 2,30$)
+Product: milk, Price: 1,15$, Quantity: 15, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 5, ItemDiscountedPrice: 1,15$), AppliedDiscount: 5,75$)
+Product: milk, Price: 1,15$, Quantity: 15, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 5, ItemDiscountedPrice: 1,15$), AppliedDiscount: 5,75$)
+Product: milk, Price: 1,15$, Quantity: 4, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 1,15$), AppliedDiscount: 1,15$)
+Product: milk, Price: 1,15$, Quantity: 4, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 1,15$), AppliedDiscount: 1,15$)
+Product: milk, Price: 1,15$, Quantity: 4, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 1,15$), AppliedDiscount: 1,15$)
+Product: milk, Price: 1,15$, Quantity: 4, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 1,15$), AppliedDiscount: 1,15$)
+Product: milk, Price: 1,15$, Quantity: 25, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 8, ItemDiscountedPrice: 1,15$), AppliedDiscount: 9,20$)
+Product: milk, Price: 1,15$, Quantity: 25, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 8, ItemDiscountedPrice: 1,15$), AppliedDiscount: 9,20$)
+

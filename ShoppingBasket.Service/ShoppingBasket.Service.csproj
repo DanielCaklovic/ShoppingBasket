@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingBasket.Repository.Common\ShoppingBasket.Repository.Common.csproj" />
+    <ProjectReference Include="..\ShoppingBasket.Service.Common\ShoppingBasket.Service.Common.csproj" />
+  </ItemGroup>
+
+</Project>
