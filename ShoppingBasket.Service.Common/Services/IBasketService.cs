@@ -59,6 +59,15 @@ namespace ShoppingBasket.Service.Common
         public Task<IBasket> AddProductToBasketAsync(Guid userId, Guid productId, int quantity);
 
         /// <summary>
+        /// Deletes the product from basket asynchronous.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="productId">The product identifier.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns></returns>
+        public Task<IBasket> DeleteProductFromBasketAsync(Guid userId, Guid productId, int quantity);
+
+        /// <summary>
         /// Gets the user basket asynchronous.
         /// </summary>
         /// <param name="userId">The user identifier.</param>

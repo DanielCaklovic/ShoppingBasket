@@ -172,6 +172,19 @@ namespace ShoppingBasket.API.Controllers
             return Ok(basketREST);
         }
 
+        // DELETE: api/Basket/delete-product-from-basket/
+        [HttpDelete("delete-product-from-basket")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<BasketREST>> DeleteProductFromBasketAsync([FromBody]DeleteProductFromBasketRequest data)
+        {
+            var basketModel = await BasketService.DeleteProductFromBasketAsync(data.UserId, data.ProductId, data.Quantity);
+            var basketREST = Mapper.Map<BasketREST>(basketModel);
+
+            return Ok(basketREST);
+        }
+
         /// <summary>
         /// Basket rest model.
         /// </summary>

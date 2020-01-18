@@ -128,5 +128,37 @@ namespace ShoppingBasket.Repository
 
             return Mapper.Map<IBasket>(entity);
         }
+
+        /// <summary>
+        /// Deletes the product from basket.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="productId">The product identifier.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns></returns>
+        public async Task<IBasket> DeleteProductFromBasket(Guid userId, Guid productId, int quantity)
+        {
+            var basket = await GetUserBasketAsync(userId);
+            var product = await ProductRepository.GetByIdAsync(productId);
+
+            var basketEntity = await GetByIdAsync(basket.Id);
+            var basketItem = basketEntity.Items.Find(x => x.ProductId == product.Id);
+
+            //delete product from basket
+            if(basketItem.Quantity == quantity)
+            {
+                await BasketItemRepository.DeleteAsync(basketItem.Id);
+            }
+            else
+            {
+                //update quantity
+                var basketItemEntity = await BasketItemRepository.GetByIdAsync(basketItem.Id);
+                basketItemEntity.Quantity -= quantity;
+                basketItemEntity.DateUpdated = DateTime.UtcNow;
+                await BasketItemRepository.UpdateAsync(basketItemEntity.Id, basketItemEntity);
+            }
+
+            return await GetByIdAsync(basket.Id);
+        }
     }
 }

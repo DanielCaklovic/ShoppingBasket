@@ -21,6 +21,15 @@ namespace ShoppingBasket.Repository.Common
         public Task<IBasket> AddProductToBasket(Guid userId, Guid productId, int quantity);
 
         /// <summary>
+        /// Deletes the product from basket.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="productId">The product identifier.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns></returns>
+        public Task<IBasket> DeleteProductFromBasket(Guid userId, Guid productId, int quantity);
+
+        /// <summary>
         /// Gets the user basket asynchronous.
         /// </summary>
         /// <param name="userId">The user identifier.</param>

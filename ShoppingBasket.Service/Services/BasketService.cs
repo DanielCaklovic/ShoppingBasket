@@ -134,8 +134,21 @@ namespace ShoppingBasket.Service
         /// <returns></returns>
         public async Task<IBasket> AddProductToBasketAsync(Guid userId, Guid productId, int quantity)
         {
-            var updatedBasketEntity = await BasketRepository.AddProductToBasket(userId, productId, quantity);
-            return await ApplyDiscountsAsync(updatedBasketEntity);
+            var basket = await BasketRepository.AddProductToBasket(userId, productId, quantity);
+            return await ApplyDiscountsAsync(basket);
+        }
+
+        /// <summary>
+        /// Deletes the product from basket asynchronous.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="productId">The product identifier.</param>
+        /// <param name="quantity">The quantity.</param>
+        /// <returns></returns>
+        public async Task<IBasket> DeleteProductFromBasketAsync(Guid userId, Guid productId, int quantity)
+        {
+            var basket = await BasketRepository.DeleteProductFromBasket(userId, productId, quantity);
+            return await ApplyDiscountsAsync(basket);
         }
     }
 }
