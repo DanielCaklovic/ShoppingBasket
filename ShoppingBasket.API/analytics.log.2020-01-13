@@ -1,5 +1,0 @@
-2020-01-13 22:42:29,517 INFO: Total basket sum: 9,00$, Total discount: 2,80$, Basket contents:
-Product: bread, Price: 1$, Quantity: 1, Discount: No discount
-Product: butter, Price: 0,8$, Quantity: 2, Discount: (DiscountRule: Bread discount, ApplicableDiscount: (Items: 1, ItemDiscountedPrice: 0,5$), AppliedDiscount: 0,5$)
-Product: milk, Price: 1,15$, Quantity: 8, Discount: (DiscountRule: Milk discount, ApplicableDiscount: (Items: 2, ItemDiscountedPrice: 1,15$), AppliedDiscount: 2,30$)
-
