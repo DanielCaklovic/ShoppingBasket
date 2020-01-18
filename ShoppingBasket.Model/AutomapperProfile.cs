@@ -28,7 +28,6 @@ namespace ShoppingBasket.Model
             CreateMap<ShoppingBasket.DAL.Entities.DiscountRule, IDiscountRule>().ReverseMap();
             CreateMap<ShoppingBasket.DAL.Entities.Product, IProduct>().ReverseMap();
             CreateMap<ShoppingBasket.DAL.Entities.User, IUser>().ReverseMap();
-
         }
     }
 }

@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
 using ShoppingBasket.DAL.DBContext;
-using ShoppingBasket.Model;
+using ShoppingBasket.DAL.Entities;
+using ShoppingBasket.Model.Common;
 using ShoppingBasket.Repository.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShoppingBasket.Repository
 {
@@ -15,7 +11,7 @@ namespace ShoppingBasket.Repository
     /// </summary>
     /// <seealso cref="ShoppingBasket.Repository.BaseRepository{ShoppingBasket.DAL.Entities.BasketItem}" />
     /// <seealso cref="ShoppingBasket.Repository.Common.IBasketItemRepository" />
-    public class BasketItemRepository : BaseRepository<ShoppingBasket.DAL.Entities.BasketItem>, IBasketItemRepository
+    public class BasketItemRepository : BaseRepository<BasketItem>, IBasketItemRepository
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BasketItemRepository"/> class.

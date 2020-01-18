@@ -7,8 +7,8 @@ namespace ShoppingBasket.Model.Common
     /// <summary>
     /// Discount rule contract.
     /// </summary>
-    /// <seealso cref="ShoppingBasket.Model.Common.IBase" />
-    public interface IDiscountRule : IBase
+    /// <seealso cref="ShoppingBasket.Model.Common.IBaseModel" />
+    public interface IDiscountRule : IBaseModel
     {
         /// <summary>
         /// Gets or sets the product.

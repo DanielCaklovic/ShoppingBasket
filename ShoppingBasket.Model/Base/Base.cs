@@ -8,8 +8,8 @@ namespace ShoppingBasket.Model.Base
     /// <summary>
     /// Base model.
     /// </summary>
-    /// <seealso cref="ShoppingBasket.Model.Common.IBase" />
-    public class Base : IBase
+    /// <seealso cref="ShoppingBasket.Model.Common.IBaseModel" />
+    public class Base : IBaseModel
     {
         /// <summary>
         /// Gets or sets the identifier.

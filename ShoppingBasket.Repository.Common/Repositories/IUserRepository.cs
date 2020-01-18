@@ -1,7 +1,9 @@
 ﻿using ShoppingBasket.DAL.Entities;
+using ShoppingBasket.Model.Common;
 
 namespace ShoppingBasket.Repository.Common
 {
+
     /// <summary>
     /// User repository contract.
     /// </summary>

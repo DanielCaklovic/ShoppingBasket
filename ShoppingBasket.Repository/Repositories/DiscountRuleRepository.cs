@@ -1,12 +1,7 @@
 ﻿using AutoMapper;
 using ShoppingBasket.DAL.DBContext;
-using ShoppingBasket.Model;
+using ShoppingBasket.DAL.Entities;
 using ShoppingBasket.Repository.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShoppingBasket.Repository
 {
@@ -15,7 +10,7 @@ namespace ShoppingBasket.Repository
     /// </summary>
     /// <seealso cref="ShoppingBasket.Repository.BaseRepository{ShoppingBasket.DAL.Entities.DiscountRule}" />
     /// <seealso cref="ShoppingBasket.Repository.Common.IDiscountRuleRepository" />
-    public class DiscountRuleRepository : BaseRepository<ShoppingBasket.DAL.Entities.DiscountRule>, IDiscountRuleRepository
+    public class DiscountRuleRepository : BaseRepository<DiscountRule>, IDiscountRuleRepository
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DiscountRuleRepository"/> class.

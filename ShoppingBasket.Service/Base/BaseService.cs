@@ -10,7 +10,7 @@ namespace ShoppingBasket.Service
     /// <summary>
     /// Base service.
     /// </summary>
-    /// <seealso cref="ShoppingBasket.Service.Common.IBaseService" />
+    /// <seealso cref="ShoppingBasket.Service.Common.IBaseModelService" />
     public class BaseService : IBaseService
     {
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
-using ShoppingBasket.Model;
+using ShoppingBasket.DAL.Entities;
 using ShoppingBasket.Model.Common;
 using ShoppingBasket.Repository.Common;
 using ShoppingBasket.Service.Common;
@@ -42,8 +42,7 @@ namespace ShoppingBasket.Service
         /// <returns></returns>
         public async Task<bool> CreateAsync(IUser model)
         {
-            var entity = Mapper.Map<ShoppingBasket.DAL.Entities.User>(model);
-            return await UserRepository.CreateAsync(entity);
+            return await UserRepository.CreateAsync(Mapper.Map<User>(model));
         }
 
         /// <summary>
@@ -54,8 +53,7 @@ namespace ShoppingBasket.Service
         /// <returns></returns>
         public async Task<bool> UpdateAsync(Guid id, IUser model)
         {
-            var entity = Mapper.Map<ShoppingBasket.DAL.Entities.User>(model);
-            return await UserRepository.UpdateAsync(id, entity);
+            return await UserRepository.UpdateAsync(id, Mapper.Map<User>(model));
         }
 
         /// <summary>

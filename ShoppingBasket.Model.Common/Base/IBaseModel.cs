@@ -7,7 +7,7 @@ namespace ShoppingBasket.Model.Common
     /// <summary>
     /// Base model contract.
     /// </summary>
-    public interface IBase
+    public interface IBaseModel
     {
         /// <summary>
         /// Gets or sets the identifier.

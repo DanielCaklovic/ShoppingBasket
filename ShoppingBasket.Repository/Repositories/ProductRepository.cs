@@ -1,21 +1,16 @@
 ﻿using AutoMapper;
 using ShoppingBasket.DAL.DBContext;
-using ShoppingBasket.Model;
+using ShoppingBasket.DAL.Entities;
 using ShoppingBasket.Repository.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShoppingBasket.Repository
 {
     /// <summary>
-    /// Prodcut repository.
+    /// Product repository.
     /// </summary>
     /// <seealso cref="ShoppingBasket.Repository.BaseRepository{ShoppingBasket.DAL.Entities.Product}" />
     /// <seealso cref="ShoppingBasket.Repository.Common.IProductRepository" />
-    public class ProductRepository : BaseRepository<ShoppingBasket.DAL.Entities.Product>, IProductRepository
+    public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductRepository"/> class.

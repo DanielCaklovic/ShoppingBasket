@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.Extensions.Logging;
 using ShoppingBasket.DAL.DBContext;
 using ShoppingBasket.Repository.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ShoppingBasket.Repository
@@ -56,10 +52,10 @@ namespace ShoppingBasket.Repository
         /// <returns></returns>
         public async Task<bool> CreateAsync(TEntity entity)
         {
-            EntityEntry dbEntityEntry = DbContext.Entry(entity);
-            if (dbEntityEntry.State != EntityState.Detached)
+            EntityEntry entityEntry = DbContext.Entry(entity);
+            if (entityEntry.State != EntityState.Detached)
             {
-                dbEntityEntry.State = EntityState.Added;
+                entityEntry.State = EntityState.Added;
             }
             else
             {
@@ -77,12 +73,12 @@ namespace ShoppingBasket.Repository
         /// <returns></returns>
         public async Task<bool> UpdateAsync(Guid id, TEntity entity)
         {
-            EntityEntry dbEntityEntry = DbContext.Entry(entity);
-            if (dbEntityEntry.State == EntityState.Detached)
+            EntityEntry entityEntry = DbContext.Entry(entity);
+            if (entityEntry.State == EntityState.Detached)
             {
                 DbContext.Set<TEntity>().Attach(entity);
             }
-            dbEntityEntry.State = EntityState.Modified;
+            entityEntry.State = EntityState.Modified;
 
             return await DbContext.SaveChangesAsync() > 0;
         }
@@ -95,10 +91,10 @@ namespace ShoppingBasket.Repository
         public async Task<bool> DeleteAsync(Guid id)
         {
             var entity = await GetByIdAsync(id);
-            EntityEntry dbEntityEntry = DbContext.Entry(entity);
-            if (dbEntityEntry.State != EntityState.Deleted)
+            EntityEntry entityEntry = DbContext.Entry(entity);
+            if (entityEntry.State != EntityState.Deleted)
             {
-                dbEntityEntry.State = EntityState.Deleted;
+                entityEntry.State = EntityState.Deleted;
             }
             else
             {
@@ -116,8 +112,7 @@ namespace ShoppingBasket.Repository
         /// <returns></returns>
         public async Task<TEntity> GetByIdAsync(Guid id)
         {
-            return await DbContext.Set<TEntity>()
-               .FindAsync(id);
+            return await DbContext.Set<TEntity>().FindAsync(id);
         }
     }
 }

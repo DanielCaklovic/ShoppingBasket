@@ -1,4 +1,6 @@
-﻿using ShoppingBasket.Repository;
+﻿using Microsoft.EntityFrameworkCore;
+using ShoppingBasket.DAL.DBContext;
+using ShoppingBasket.Repository;
 using ShoppingBasket.Repository.Common;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -12,9 +14,13 @@ namespace Microsoft.Extensions.DependencyInjection
         /// Adds the repositories.
         /// </summary>
         /// <param name="services">The services.</param>
+        /// <param name="connectionString">The connection string.</param>
         /// <returns></returns>
-        public static IServiceCollection AddRepositories(this IServiceCollection services)
+        public static IServiceCollection AddRepositories(this IServiceCollection services, string connectionString)
         {
+            services.AddEntityFrameworkNpgsql().AddDbContext<DatabaseContext>(opt =>
+                opt.UseNpgsql(connectionString));
+
             services.AddTransient<IBasketRepository, BasketRepository>();
             services.AddTransient<IBasketItemRepository, BasketItemRepository>();
             services.AddTransient<IDiscountRuleRepository, DiscountRuleRepository>();

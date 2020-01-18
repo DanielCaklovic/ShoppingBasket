@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
+using ShoppingBasket.DAL.Entities;
 using ShoppingBasket.Model.Common;
 using ShoppingBasket.Repository.Common;
 using ShoppingBasket.Service.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ShoppingBasket.Service
@@ -60,8 +58,7 @@ namespace ShoppingBasket.Service
         /// <returns></returns>
         public async Task<bool> CreateAsync(IBasket model)
         {
-            var entity = Mapper.Map<ShoppingBasket.DAL.Entities.Basket>(model);
-            return await BasketRepository.CreateAsync(entity);
+            return await BasketRepository.CreateAsync(Mapper.Map<Basket>(model));
         }
 
         /// <summary>
@@ -72,8 +69,7 @@ namespace ShoppingBasket.Service
         /// <returns></returns>
         public async Task<bool> UpdateAsync(Guid id, IBasket model)
         {
-            var entity = Mapper.Map<ShoppingBasket.DAL.Entities.Basket>(model);
-            return await BasketRepository.UpdateAsync(id, entity);
+            return await BasketRepository.UpdateAsync(id, Mapper.Map<Basket>(model));
         }
 
         /// <summary>
@@ -138,14 +134,8 @@ namespace ShoppingBasket.Service
         /// <returns></returns>
         public async Task<IBasket> AddProductToBasketAsync(Guid userId, Guid productId, int quantity)
         {
-            var basket = await GetUserBasketAsync(userId);
-            var product = await ProductService.GetByIdAsync(productId);
-            var basketEntity = Mapper.Map<ShoppingBasket.DAL.Entities.Basket>(basket);
-            var productEntity = Mapper.Map<ShoppingBasket.DAL.Entities.Product>(product);
-
-            var updatedBasketEntity = await BasketRepository.AddProductToBasket(basketEntity, productEntity, quantity);
-            var basketModel = Mapper.Map<IBasket>(updatedBasketEntity);
-            return await ApplyDiscountsAsync(basketModel);
+            var updatedBasketEntity = await BasketRepository.AddProductToBasket(userId, productId, quantity);
+            return await ApplyDiscountsAsync(updatedBasketEntity);
         }
     }
 }

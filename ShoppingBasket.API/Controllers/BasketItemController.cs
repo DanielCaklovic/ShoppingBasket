@@ -145,13 +145,6 @@ namespace ShoppingBasket.API.Controllers
             /// </value>
             public Guid Id { get; set; }
             /// <summary>
-            /// Gets or sets the basket identifier.
-            /// </summary>
-            /// <value>
-            /// The basket identifier.
-            /// </value>
-            public Guid BasketId { get; set; }
-            /// <summary>
             /// Gets or sets the product.
             /// </summary>
             /// <value>
@@ -159,13 +152,6 @@ namespace ShoppingBasket.API.Controllers
             /// </value>
             public ProductREST Product { get; set; }
 
-            /// <summary>
-            /// Gets or sets the product identifier.
-            /// </summary>
-            /// <value>
-            /// The product identifier.
-            /// </value>
-            public Guid ProductId { get; set; }
             /// <summary>
             /// Gets or sets the quantity.
             /// </summary>

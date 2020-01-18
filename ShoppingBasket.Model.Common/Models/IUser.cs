@@ -7,8 +7,8 @@ namespace ShoppingBasket.Model.Common
     /// <summary>
     /// User model contract.
     /// </summary>
-    /// <seealso cref="ShoppingBasket.Model.Common.IBase" />
-    public interface IUser : IBase
+    /// <seealso cref="ShoppingBasket.Model.Common.IBaseModel" />
+    public interface IUser : IBaseModel
     {
         /// <summary>
         /// Gets or sets the firstname.

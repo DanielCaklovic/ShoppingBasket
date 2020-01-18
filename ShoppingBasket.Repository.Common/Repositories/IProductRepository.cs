@@ -2,6 +2,7 @@
 
 namespace ShoppingBasket.Repository.Common
 {
+
     /// <summary>
     /// Product repository contract.
     /// </summary>

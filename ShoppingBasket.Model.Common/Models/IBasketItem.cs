@@ -7,8 +7,8 @@ namespace ShoppingBasket.Model.Common
     /// <summary>
     /// Basket item contract.
     /// </summary>
-    /// <seealso cref="ShoppingBasket.Model.Common.IBase" />
-    public interface IBasketItem : IBase
+    /// <seealso cref="ShoppingBasket.Model.Common.IBaseModel" />
+    public interface IBasketItem : IBaseModel
     {
         /// <summary>
         /// Gets or sets the basket identifier.

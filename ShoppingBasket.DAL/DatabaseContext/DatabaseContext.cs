@@ -19,7 +19,7 @@ namespace ShoppingBasket.DAL.DBContext
         /// <param name="options">The options.</param>
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
-
+            DatabaseInitializer.Initialize(this);
         }
 
         /// <summary>

@@ -2,12 +2,10 @@
 using ShoppingBasket.DAL.DBContext;
 using ShoppingBasket.Repository.Common;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ShoppingBasket.Model.Common;
 using ShoppingBasket.DAL.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace ShoppingBasket.Repository
 {
@@ -16,7 +14,7 @@ namespace ShoppingBasket.Repository
     /// </summary>
     /// <seealso cref="ShoppingBasket.Repository.BaseRepository{ShoppingBasket.DAL.Entities.Basket}" />
     /// <seealso cref="ShoppingBasket.Repository.Common.IBasketRepository" />
-    public class BasketRepository : BaseRepository<ShoppingBasket.DAL.Entities.Basket>, IBasketRepository
+    public class BasketRepository : BaseRepository<Basket>, IBasketRepository
     {
         /// <summary>
         /// The product repository
@@ -50,30 +48,35 @@ namespace ShoppingBasket.Repository
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public async Task<ShoppingBasket.DAL.Entities.Basket> GetByIdAsync(Guid id)
+        public async Task<IBasket> GetByIdAsync(Guid id)
         {
             var entity = await base.GetByIdAsync(id);
-            DbContext.Entry(entity).Collection(p => p.Items).Load();
-            DbContext.Entry(entity).Collection(p => p.DiscountRules).Load();
-
-            //cannot prefetch products from basket using efcore, find out how to do this
-            foreach (var basketItem in entity.Items)
+            if(entity != null)
             {
-                basketItem.Product = await ProductRepository.GetByIdAsync(basketItem.ProductId);
+                DbContext.Entry(entity).Collection(p => p.Items).Load();
+                DbContext.Entry(entity).Collection(p => p.DiscountRules).Load();
+
+                //cannot prefetch products from basket using efcore, find out how to do this
+                foreach (var basketItem in entity.Items)
+                {
+                    basketItem.Product = await ProductRepository.GetByIdAsync(basketItem.ProductId);
+                }
             }
 
-            return entity;
+            return Mapper.Map<IBasket>(entity);
         }
 
         /// <summary>
         /// Adds the product to basket.
         /// </summary>
-        /// <param name="basket">The basket.</param>
-        /// <param name="product">The product.</param>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="productId">The product identifier.</param>
         /// <param name="quantity">The quantity.</param>
         /// <returns></returns>
-        public async Task<Basket> AddProductToBasket(Basket basket, Product product, int quantity)
+        public async Task<IBasket> AddProductToBasket(Guid userId, Guid productId, int quantity)
         {
+            var basket = await GetUserBasketAsync(userId);
+            var product = await ProductRepository.GetByIdAsync(productId);
             //if product does not exists add new, otherwise update quantity of the existing
             if (!basket.Items.Any(x => x.ProductId == product.Id))
             {
@@ -91,10 +94,14 @@ namespace ShoppingBasket.Repository
             }
             else
             {
-                var basketItem = basket.Items.Find(x => x.ProductId == product.Id);
-                basketItem.Quantity += quantity;
+                var basketEntity = await GetByIdAsync(basket.Id);
+                var basketItem = basketEntity.Items.Find(x => x.ProductId == product.Id);
 
-                await BasketItemRepository.UpdateAsync(basketItem.Id, basketItem);
+                var basketItemEntity = await BasketItemRepository.GetByIdAsync(basketItem.Id);
+                basketItemEntity.Quantity += quantity;
+                basketItemEntity.DateUpdated = DateTime.UtcNow;
+
+                await BasketItemRepository.UpdateAsync(basketItemEntity.Id, basketItemEntity);
             }
 
             return await GetByIdAsync(basket.Id);
@@ -105,18 +112,21 @@ namespace ShoppingBasket.Repository
         /// </summary>
         /// <param name="userId">The user identifier.</param>
         /// <returns></returns>
-        public async Task<Basket> GetUserBasketAsync(Guid userId)
+        public async Task<IBasket> GetUserBasketAsync(Guid userId)
         {
-            var basket = DbContext.Baskets.FirstOrDefault(x => x.UserId == userId);
-            DbContext.Entry(basket).Collection(p => p.Items).Load();
-
-            //cannot prefetch products from basket using efcore, find out how to do this
-            foreach (var basketItem in basket.Items)
+            var entity = DbContext.Baskets.FirstOrDefault(x => x.UserId == userId);
+            if(entity != null)
             {
-                basketItem.Product = await ProductRepository.GetByIdAsync(basketItem.ProductId);
+                DbContext.Entry(entity).Collection(p => p.Items).Load();
+
+                //TODO: cannot prefetch products from basket using efcore, find out how to do this
+                foreach (var basketItem in entity.Items)
+                {
+                    basketItem.Product = await ProductRepository.GetByIdAsync(basketItem.ProductId);
+                }
             }
 
-            return basket;
+            return Mapper.Map<IBasket>(entity);
         }
     }
 }

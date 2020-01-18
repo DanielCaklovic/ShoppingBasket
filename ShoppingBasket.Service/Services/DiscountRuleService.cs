@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.Logging;
-using ShoppingBasket.Model;
+using ShoppingBasket.DAL.Entities;
 using ShoppingBasket.Model.Common;
 using ShoppingBasket.Repository.Common;
 using ShoppingBasket.Service.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ShoppingBasket.Service
@@ -45,8 +42,7 @@ namespace ShoppingBasket.Service
         /// <returns></returns>
         public async Task<bool> CreateAsync(IDiscountRule model)
         {
-            var entity = Mapper.Map<ShoppingBasket.DAL.Entities.DiscountRule>(model);
-            return await DiscountRuleRepository.CreateAsync(entity);
+            return await DiscountRuleRepository.CreateAsync(Mapper.Map<DiscountRule>(model));
         }
 
         /// <summary>
@@ -57,8 +53,7 @@ namespace ShoppingBasket.Service
         /// <returns></returns>
         public async Task<bool> UpdateAsync(Guid id, IDiscountRule model)
         {
-            var entity = Mapper.Map<ShoppingBasket.DAL.Entities.DiscountRule>(model);
-            return await DiscountRuleRepository.UpdateAsync(id, entity);
+            return await DiscountRuleRepository.UpdateAsync(id, Mapper.Map<DiscountRule>(model));
         }
 
         /// <summary>
