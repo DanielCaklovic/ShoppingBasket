@@ -18,54 +18,43 @@ namespace ShoppingBasket.Tests
     /// <summary>
     /// Basket service tests.
     /// </summary>
-    public class BasketServiceTest
+    public class DiscountServiceTest
     {
         /// <summary>
         /// The basket
         /// </summary>
-        private Mock<IBasket> basket;
+        private IBasket basket;
 
         /// <summary>
         /// The bread
         /// </summary>
-        private Mock<IProduct> bread;
+        private IProduct bread;
         /// <summary>
         /// The butter
         /// </summary>
-        private Mock<IProduct> butter;
+        private IProduct butter;
         /// <summary>
         /// The milk
         /// </summary>
-        private Mock<IProduct> milk;
+        private IProduct milk;
 
         /// <summary>
         /// The bread discount rule
         /// </summary>
-        private Mock<IDiscountRule> breadDiscountRule;
+        private IDiscountRule breadDiscountRule;
         /// <summary>
         /// The milk discount rule
         /// </summary>
-        private Mock<IDiscountRule> milkDiscountRule;
+        private IDiscountRule milkDiscountRule;
         /// <summary>
         /// The mapper
         /// </summary>
-        private Mock<IMapper> mapper;
+        private IMapper mapper;
+
         /// <summary>
-        /// The basket service logger mock
+        /// The discount service logger mock
         /// </summary>
-        private Mock<ILogger<BasketService>> basketServiceLoggerMock;
-        /// <summary>
-        /// The discount service mock
-        /// </summary>
-        private Mock<IDiscountService> discountServiceMock;
-        /// <summary>
-        /// The product service mock
-        /// </summary>
-        private Mock<IProductService> productServiceMock;
-        /// <summary>
-        /// The basket repository mock
-        /// </summary>
-        private Mock<IBasketRepository> basketRepositoryMock;
+        private Mock<ILogger<DiscountService>> discountServiceLoggerMock;
 
         /// <summary>
         /// The basket identifier
@@ -92,10 +81,6 @@ namespace ShoppingBasket.Tests
         [SetUp]
         public void Setup()
         {
-            bread = new Mock<IProduct>();
-            bread.SetupAllProperties();
-
-            bread.Setup(x => x.Id == Guid.NewGuid());
             //products
             bread = new Product
             {
@@ -176,11 +161,7 @@ namespace ShoppingBasket.Tests
             });
 
             mapper = mappingConfig.CreateMapper();
-
-            discountServiceMock = new Mock<IDiscountService>();
-            productServiceMock = new Mock<IProductService>();
-            basketRepositoryMock = new Mock<IBasketRepository>();
-            basketServiceLoggerMock = new Mock<ILogger<BasketService>>();
+            discountServiceLoggerMock = new Mock<ILogger<DiscountService>>();
         }
 
         /// <summary>
@@ -227,17 +208,10 @@ namespace ShoppingBasket.Tests
                 DateUpdated = DateTime.UtcNow
             });
 
-            discountServiceMock.Setup(p => p.ApplyDiscountsAsync(It.IsAny<IBasket>())).Returns(Task.FromResult(expectedResult));
+            DiscountService discountService = new DiscountService(mapper, discountServiceLoggerMock.Object);
+            var result = await discountService.ApplyDiscountsAsync(basket);
 
-            BasketService basketService = new BasketService(basketRepositoryMock.Object,
-                discountServiceMock.Object,
-                productServiceMock.Object,
-                mapper,
-                basketServiceLoggerMock.Object);
-
-            var totalSum = await basketService.GetTotalAsync(BasketId);
-
-            Assert.AreEqual(expectedResult, totalSum);
+            Assert.AreEqual(expectedResult, result.Total);
         }
     }
 }
